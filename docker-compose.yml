@@ -1,0 +1,19 @@
+services:
+  sensor-api:
+    build:
+      context: ./sensor-api
+    container_name: sensor-api
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:postgresql://postgres-db:5432/sensor-api
+
+  postgres-db:
+    image: postgres
+    container_name: postgres-db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: sensor-api
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
